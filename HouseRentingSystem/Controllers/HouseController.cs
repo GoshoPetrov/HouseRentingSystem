@@ -1,5 +1,6 @@
 ﻿using HouseRentingSystem.Models;
 using HouseRentingSystemData.Data;
+using HouseRentingSystemData.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -77,6 +78,41 @@ namespace HouseRentingSystem.Controllers
             }
 
             return View(house);
+        }
+
+        // GET: /House/CreateHouse
+        [HttpGet]
+        public IActionResult CreateHouse()
+        {
+            return View();
+        }
+
+        // POST: /House/CreateHouse
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateHouse(HouseViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            // Map ViewModel to your House entity
+            var house = new House
+            {
+                Title = model.Name,
+                Address = model.Address,
+                ImageUrl = model.ImageUrl,
+                Description = "",
+                CategoryId = 1,
+                PricePerMonth = 42.4m,
+
+            };
+
+            _context.Houses.Add(house);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(AllHouses));
         }
     }
 }

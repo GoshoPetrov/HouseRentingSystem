@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseRentingSystem.Migrations
 {
     [DbContext(typeof(HouseRentingDbContext))]
-    [Migration("20260401153843_InitialMigration")]
+    [Migration("20260401161304_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -166,7 +166,7 @@ namespace HouseRentingSystem.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<Guid>("AgentId")
+                    b.Property<Guid?>("AgentId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("CategoryId")
@@ -379,9 +379,7 @@ namespace HouseRentingSystem.Migrations
                 {
                     b.HasOne("HouseRentingSystemData.Data.Entities.Agent", "Agent")
                         .WithMany("ManagedHouses")
-                        .HasForeignKey("AgentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("AgentId");
 
                     b.HasOne("HouseRentingSystemData.Data.Entities.Category", "Category")
                         .WithMany("Houses")

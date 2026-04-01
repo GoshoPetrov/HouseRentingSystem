@@ -50,11 +50,11 @@ public class HouseRentingDbContext : IdentityDbContext<HouseRentingSystemData.Da
             .HasForeignKey(h => h.CategoryId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.Entity<House>()
-            .HasOne(h => h.Agent)
-            .WithMany(a => a.ManagedHouses)
-            .HasForeignKey(h => h.AgentId)
-            .OnDelete(DeleteBehavior.Restrict);
+        //builder.Entity<House>()
+        //    .HasOne(h => h.Agent)
+        //    .WithMany(a => a.ManagedHouses)
+        //    .HasForeignKey(h => h.AgentId)
+        //    .OnDelete(DeleteBehavior.Restrict);
 
         SeedUsers();
         SeedAgent();

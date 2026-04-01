@@ -196,7 +196,7 @@ namespace HouseRentingSystem.Migrations
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PricePerMonth = table.Column<decimal>(type: "decimal(12,3)", maxLength: 2000, nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    AgentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AgentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     RenterId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -206,8 +206,7 @@ namespace HouseRentingSystem.Migrations
                         name: "FK_Houses_Agents_AgentId",
                         column: x => x.AgentId,
                         principalTable: "Agents",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Houses_Categories_CategoryId",
                         column: x => x.CategoryId,
