@@ -1,3 +1,8 @@
+using HouseRentingSystemData.Data;
+using HouseRentingSystemData.Data.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 namespace HouseRentingSystem
 {
     public class Program
@@ -7,6 +12,28 @@ namespace HouseRentingSystem
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            var connectionString = builder.Configuration.GetConnectionString("");
+            builder.Services.AddDbContext<HouseRentingDbContext>(opt => opt.UseSqlServer(connectionString));
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<HouseRentingDbContext>()
+                .AddDefaultTokenProviders();
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
+            {
+                opt.User.RequireUniqueEmail = true;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredLength = 6;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.SignIn.RequireConfirmedEmail = false;
+            });b
+
+            builder.Services.ConfigureApplicationCookie(option =>
+            {
+                option.LogoutPath = "/User/Login";
+                option.AccessDeniedPath = "/User/AccessDenied";
+            });
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
@@ -24,6 +51,7 @@ namespace HouseRentingSystem
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
