@@ -2,6 +2,7 @@
 using HouseRentingSystemData.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace HouseRentingSystem.Controllers
 {
@@ -26,7 +27,8 @@ namespace HouseRentingSystem.Controllers
 
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if(ModelState.IsValid == false)
+            
+            if (ModelState.IsValid == false)
             {
                 return View(model);
             }
@@ -72,7 +74,7 @@ namespace HouseRentingSystem.Controllers
                 Email = model.Email
             };
 
-            var result = userManager.CreateAsync(newUser,model.Password);
+            var result = await userManager.CreateAsync(newUser, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction(nameof(Login));
@@ -80,7 +82,7 @@ namespace HouseRentingSystem.Controllers
 
             foreach(var error in result.Errors)
             {
-                ModelState.AddModelError(String.Empty, error.Descrition);
+                ModelState.AddModelError(String.Empty, error.Description);
             }
 
             return View();

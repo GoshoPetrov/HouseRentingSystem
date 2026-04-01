@@ -12,11 +12,8 @@ namespace HouseRentingSystem
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("");
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<HouseRentingDbContext>(opt => opt.UseSqlServer(connectionString));
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<HouseRentingDbContext>()
-                .AddDefaultTokenProviders();
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
             {
@@ -26,7 +23,9 @@ namespace HouseRentingSystem
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequireUppercase = false;
                 opt.SignIn.RequireConfirmedEmail = false;
-            });b
+            })
+                .AddEntityFrameworkStores<HouseRentingDbContext>()
+                .AddDefaultTokenProviders();
 
             builder.Services.ConfigureApplicationCookie(option =>
             {
