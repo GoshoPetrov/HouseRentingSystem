@@ -1,7 +1,28 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model HouseRentingSystem.Models.HouseViewModel
+
 @{
+    ViewData["Title"] = "House Details";
 }
 
+<div class="container mt-4">
+    <h2>@Model.Name</h2>
 
+    <div class="row mt-3">
+        <div class="col-md-6">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.Name" />
+            }
+            else
+            {
+                <img src="https://via.placeholder.com/500x300?text=No+Image" class="img-fluid rounded" alt="No Image" />
+            }
+        </div>
+        <div class="col-md-6">
+            <h4>Address</h4>
+            <p>@Model.Address</p>
+
+            <a asp-action="AllHouses" class="btn btn-secondary mt-3">Back to All Houses</a>
+        </div>
+    </div>
+</div>

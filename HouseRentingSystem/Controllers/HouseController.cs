@@ -57,10 +57,26 @@ namespace HouseRentingSystem.Controllers
             return View(houses);
         }
 
-        public IActionResult Details(int Id)
+        // GET: /House/Details/5
+        public async Task<IActionResult> Details(int id)
         {
-            var d = houses.FirstOrDefault(h => h.Id == Id);
-            return View(d);
+            var house = await _context.Houses
+                .Where(h => h.Id == id)
+                .Select(h => new HouseViewModel
+                {
+                    Id = h.Id,
+                    Name = h.Title,
+                    Address = h.Address,
+                    ImageUrl = h.ImageUrl
+                })
+                .FirstOrDefaultAsync();
+
+            if (house == null)
+            {
+                return NotFound();
+            }
+
+            return View(house);
         }
     }
 }
