@@ -8,11 +8,11 @@ namespace HouseRentingSystem.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<HouseRentingSystemData.Data.Entities.ApplicationUser> userManager;
+        private readonly SignInManager<HouseRentingSystemData.Data.Entities.ApplicationUser> signInManager;
 
-        public AuthController(UserManager<ApplicationUser> userManager, 
-            SignInManager<ApplicationUser> signInManager)
+        public AuthController(UserManager<HouseRentingSystemData.Data.Entities.ApplicationUser> userManager, 
+            SignInManager<HouseRentingSystemData.Data.Entities.ApplicationUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;

@@ -18,7 +18,7 @@ namespace HouseRentingSystemData.Data.Entities
         public string PhoneNumber { get; set; } = null!;
         [Required]
         public string UserId { get; set; } = null!;
-        public IdentityUser User { get; set; } = null!;
+        public ApplicationUser User { get; set; } = null!;
         public IEnumerable<House> ManagedHouses { get; set; } = new List<House>();
     }
 }

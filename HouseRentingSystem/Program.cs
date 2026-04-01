@@ -2,6 +2,7 @@ using HouseRentingSystemData.Data;
 using HouseRentingSystemData.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace HouseRentingSystem
 {
@@ -13,9 +14,13 @@ namespace HouseRentingSystem
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddDbContext<HouseRentingDbContext>(opt => opt.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<HouseRentingDbContext>(opt =>
+            {
+                opt.UseSqlServer(connectionString, 
+                    b => b.MigrationsAssembly("HouseRentingSystem"));
+            });
 
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
+            builder.Services.AddDefaultIdentity<HouseRentingSystemData.Data.Entities.ApplicationUser>(opt =>
             {
                 opt.User.RequireUniqueEmail = true;
                 opt.Password.RequireNonAlphanumeric = false;
@@ -34,6 +39,8 @@ namespace HouseRentingSystem
             });
 
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddRazorPages();
 
             var app = builder.Build();
 
@@ -56,6 +63,8 @@ namespace HouseRentingSystem
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapRazorPages();
 
             app.Run();
         }

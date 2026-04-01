@@ -49,7 +49,7 @@ namespace HouseRentingSystemData.Data.Entities
         public Guid AgentId { get; set; }
         public Agent Agent { get; set; }
         public string? RenterId { get; set; }
-        public IdentityUser? Renter { get; set; }
+        public ApplicationUser? Renter { get; set; }
 
     }
 }

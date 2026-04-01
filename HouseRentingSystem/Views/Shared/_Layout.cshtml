@@ -27,8 +27,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="House" asp-action="AllHouses">all Houses</a>
                         </li>
 
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                        </li> *@
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"
+                               asp-area="Identity"
+                               asp-page="/Account/Login">
+                                Login
+                            </a>
                         </li>
 
                         @if(User.Identity.IsAuthenticated){
