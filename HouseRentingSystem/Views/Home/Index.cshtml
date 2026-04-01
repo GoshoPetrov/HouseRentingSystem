@@ -5,7 +5,6 @@
 <div class="text-center">
     @if(User.Identity.IsAuthenticated)
     {
-        var x = 10;
         <h1 class="display-4">Welcome @User.FindFirstValue("name")</h1>
     }
     else

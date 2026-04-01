@@ -1,5 +1,7 @@
 ﻿using HouseRentingSystem.Models;
+using HouseRentingSystemData.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HouseRentingSystem.Controllers
 {
@@ -30,8 +32,28 @@ namespace HouseRentingSystem.Controllers
                 ImageUrl = @""
             }
         };
-        public IActionResult AllHouses()
+
+        private readonly HouseRentingDbContext _context;
+
+        public HouseController(HouseRentingDbContext context)
         {
+            _context = context;
+        }
+
+        public async Task<IActionResult> AllHouses()
+        {
+
+            // Fetch all houses from the database and map to HouseViewModel
+            var houses = await _context.Houses
+                .Select(h => new HouseViewModel
+                {
+                    Id = h.Id,
+                    Name = h.Title,
+                    Address = h.Address,
+                    ImageUrl = h.ImageUrl
+                })
+                .ToListAsync();
+
             return View(houses);
         }
 

@@ -1,5 +1,30 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<HouseRentingSystem.Models.HouseViewModel>
+
 @{
+    ViewData["Title"] = "All Houses";
 }
+
+<h2>All Houses</h2>
+
+<div class="row">
+    @foreach (var house in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                @if (!string.IsNullOrEmpty(house.ImageUrl))
+                {
+                    <img src="@house.ImageUrl" class="card-img-top" alt="@house.Name" />
+                }
+                else
+                {
+                    <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="No Image" />
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@house.Name</h5>
+                    <p class="card-text">@house.Address</p>
+                    <a href="@Url.Action("Details", "House", new { id = house.Id })" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
