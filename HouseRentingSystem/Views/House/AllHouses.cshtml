@@ -28,6 +28,14 @@
                     <h5 class="card-title">@house.Name</h5>
                     <p class="card-text">@house.Address</p>
                     <a href="@Url.Action("Details", "House", new { id = house.Id })" class="btn btn-primary">View Details</a>
+                    @if(house.CurrentUserIsOwner){
+                        <div class="card-footer">
+                            <button class="btn-primary">
+                                Edit
+                            </button>
+                        </div>
+                    }
+                    
                 </div>
             </div>
         </div>
