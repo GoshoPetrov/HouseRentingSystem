@@ -1,0 +1,13 @@
+C:\work\HouseRentingSystem\HouseRentingSystemData\bin\Debug\net8.0\HouseRentingSystemData.deps.json
+C:\work\HouseRentingSystem\HouseRentingSystemData\bin\Debug\net8.0\HouseRentingSystemData.dll
+C:\work\HouseRentingSystem\HouseRentingSystemData\bin\Debug\net8.0\HouseRentingSystemData.pdb
+C:\work\HouseRentingSystem\HouseRentingSystemData\obj\Debug\net8.0\HouseRentingSystemData.csproj.AssemblyReference.cache
+C:\work\HouseRentingSystem\HouseRentingSystemData\obj\Debug\net8.0\HouseRentingSystemData.GeneratedMSBuildEditorConfig.editorconfig
+C:\work\HouseRentingSystem\HouseRentingSystemData\obj\Debug\net8.0\HouseRentingSystemData.AssemblyInfoInputs.cache
+C:\work\HouseRentingSystem\HouseRentingSystemData\obj\Debug\net8.0\HouseRentingSystemData.AssemblyInfo.cs
+C:\work\HouseRentingSystem\HouseRentingSystemData\obj\Debug\net8.0\HouseRentingSystemData.csproj.CoreCompileInputs.cache
+C:\work\HouseRentingSystem\HouseRentingSystemData\obj\Debug\net8.0\HouseRentingSystemData.sourcelink.json
+C:\work\HouseRentingSystem\HouseRentingSystemData\obj\Debug\net8.0\HouseRentingSystemData.dll
+C:\work\HouseRentingSystem\HouseRentingSystemData\obj\Debug\net8.0\refint\HouseRentingSystemData.dll
+C:\work\HouseRentingSystem\HouseRentingSystemData\obj\Debug\net8.0\HouseRentingSystemData.pdb
+C:\work\HouseRentingSystem\HouseRentingSystemData\obj\Debug\net8.0\ref\HouseRentingSystemData.dll
