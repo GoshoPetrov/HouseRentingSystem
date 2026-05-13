@@ -1,0 +1,38 @@
+﻿@{
+    var success = TempData["Success"];
+    var error = TempData["Error"];
+    var warning = TempData["Warning"];
+    var info = TempData["Info"];
+}
+
+@if (success != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @success
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (error != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @error
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (warning != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @warning
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (info != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @info
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
